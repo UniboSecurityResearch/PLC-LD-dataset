@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
-  <fileHeader companyName="Sconosciuto" productName="Senza_nome" productVersion="1" creationDateTime="2023-09-25T10:28:22"/>
-  <contentHeader name="Senza_nome" modificationDateTime="2023-09-25T10:33:25">
+ 
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
