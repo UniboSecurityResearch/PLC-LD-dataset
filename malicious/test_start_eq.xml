@@ -482,7 +482,7 @@ end_if;
         <body>
           <ST>
             <xhtml:p><![CDATA[i:=0;
-while i<2;
+while i<2 do
   OUT:=FALSE;
 end_while;
 ]]></xhtml:p>
