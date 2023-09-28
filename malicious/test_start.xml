@@ -438,7 +438,7 @@ else
     output := False;
 end_if;
 
-i:=0
+i:=0;
 while (i < 15) do
   output := False;
 end_while;]]></xhtml:p>
