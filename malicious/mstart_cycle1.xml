@@ -413,7 +413,7 @@ if real_value = 25 then
   while i<15 do
      OUT_MV2 := FALSE;
      OUT_MV1 := TRUE;
-     i:=16;
+
   end_while;
 end_if;
 
