@@ -8,12 +8,12 @@
           <inputVars>
             <variable name="TLB2">
               <type>
-                <BOOL/>
+                <INT/>
               </type>
             </variable>
             <variable name="TLB1">
               <type>
-                <BOOL/>
+                <INT/>
               </type>
             </variable>
             <variable name="STOP">
@@ -55,9 +55,14 @@
             </variable>
           </outputVars>
           <localVars>
-            <variable name="level_filtering0">
+            <variable name="valves_handler0">
               <type>
-                <derived name="level_filtering"/>
+                <derived name="valves_handler"/>
+              </type>
+            </variable>
+            <variable name="stop_cycle0">
+              <type>
+                <derived name="stop_cycle"/>
               </type>
             </variable>
             <variable name="EQ_00">
@@ -69,16 +74,19 @@
         </interface>
         <body>
           <LD>
-            <leftPowerRail localId="1" height="120" width="10">
-              <position x="70" y="90"/>
+            <leftPowerRail localId="1" height="330" width="10">
+              <position x="70" y="70"/>
               <connectionPointOut formalParameter="">
                 <relPosition x="10" y="20"/>
               </connectionPointOut>
               <connectionPointOut formalParameter="">
-                <relPosition x="10" y="100"/>
+                <relPosition x="10" y="160"/>
+              </connectionPointOut>
+              <connectionPointOut formalParameter="">
+                <relPosition x="10" y="310"/>
               </connectionPointOut>
             </leftPowerRail>
-            <rightPowerRail localId="2" height="110" width="10">
+            <rightPowerRail localId="2" height="290" width="10">
               <position x="780" y="90"/>
               <connectionPointIn>
                 <relPosition x="0" y="20"/>
@@ -88,12 +96,21 @@
                 </connection>
               </connectionPointIn>
               <connectionPointIn>
-                <relPosition x="0" y="90"/>
-                <connection refLocalId="17" formalParameter="ENO">
-                  <position x="780" y="180"/>
-                  <position x="650" y="180"/>
-                  <position x="650" y="200"/>
-                  <position x="520" y="200"/>
+                <relPosition x="0" y="150"/>
+                <connection refLocalId="35" formalParameter="ENO">
+                  <position x="780" y="240"/>
+                  <position x="680" y="240"/>
+                  <position x="680" y="200"/>
+                  <position x="480" y="200"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointIn>
+                <relPosition x="0" y="270"/>
+                <connection refLocalId="37" formalParameter="ENO">
+                  <position x="780" y="360"/>
+                  <position x="640" y="360"/>
+                  <position x="640" y="350"/>
+                  <position x="520" y="350"/>
                 </connection>
               </connectionPointIn>
             </rightPowerRail>
@@ -103,13 +120,15 @@
                 <relPosition x="0" y="10"/>
                 <connection refLocalId="21">
                   <position x="510" y="110"/>
-                  <position x="473" y="110"/>
-                  <position x="473" y="150"/>
+                  <position x="430" y="110"/>
+                  <position x="430" y="150"/>
                   <position x="181" y="150"/>
                 </connection>
-                <connection refLocalId="33" formalParameter="OUT">
+                <connection refLocalId="40" formalParameter="OUT">
                   <position x="510" y="110"/>
-                  <position x="400" y="110"/>
+                  <position x="430" y="110"/>
+                  <position x="430" y="80"/>
+                  <position x="410" y="80"/>
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
@@ -117,98 +136,35 @@
               </connectionPointOut>
               <variable>STOP</variable>
             </contact>
-            <block localId="17" typeName="level_filtering" instanceName="level_filtering0" height="100" width="130">
-              <position x="390" y="170"/>
-              <inputVariables>
-                <variable formalParameter="EN">
-                  <connectionPointIn>
-                    <relPosition x="0" y="30"/>
-                    <connection refLocalId="22">
-                      <position x="390" y="200"/>
-                      <position x="181" y="200"/>
-                    </connection>
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="IN1">
-                  <connectionPointIn>
-                    <relPosition x="0" y="50"/>
-                    <connection refLocalId="18">
-                      <position x="390" y="220"/>
-                      <position x="265" y="220"/>
-                      <position x="265" y="250"/>
-                      <position x="220" y="250"/>
-                    </connection>
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="IN_TLB1">
-                  <connectionPointIn>
-                    <relPosition x="0" y="70"/>
-                    <connection refLocalId="23">
-                      <position x="390" y="240"/>
-                      <position x="290" y="240"/>
-                      <position x="290" y="300"/>
-                      <position x="260" y="300"/>
-                    </connection>
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="IN_TLB2">
-                  <connectionPointIn>
-                    <relPosition x="0" y="90"/>
-                    <connection refLocalId="24">
-                      <position x="390" y="260"/>
-                      <position x="320" y="260"/>
-                      <position x="320" y="340"/>
-                      <position x="290" y="340"/>
-                    </connection>
-                  </connectionPointIn>
-                </variable>
-              </inputVariables>
-              <inOutVariables/>
-              <outputVariables>
-                <variable formalParameter="ENO">
-                  <connectionPointOut>
-                    <relPosition x="130" y="30"/>
-                  </connectionPointOut>
-                </variable>
-                <variable formalParameter="OUT_MV1">
-                  <connectionPointOut>
-                    <relPosition x="130" y="50"/>
-                  </connectionPointOut>
-                </variable>
-                <variable formalParameter="OUT_MV2">
-                  <connectionPointOut>
-                    <relPosition x="130" y="70"/>
-                  </connectionPointOut>
-                </variable>
-              </outputVariables>
-            </block>
             <inVariable localId="18" height="30" width="50" negated="false">
               <position x="170" y="230"/>
               <connectionPointOut>
-                <relPosition x="50" y="20"/>
+                <relPosition x="50" y="10"/>
               </connectionPointOut>
               <expression>VALUE</expression>
             </inVariable>
             <outVariable localId="19" height="30" width="50" negated="false">
-              <position x="690" y="210"/>
+              <position x="600" y="220"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
-                <connection refLocalId="17" formalParameter="OUT_MV1">
-                  <position x="690" y="220"/>
-                  <position x="520" y="220"/>
+                <connection refLocalId="35" formalParameter="OUT_MV1">
+                  <position x="600" y="230"/>
+                  <position x="560" y="230"/>
+                  <position x="560" y="220"/>
+                  <position x="480" y="220"/>
                 </connection>
               </connectionPointIn>
               <expression>MV1</expression>
             </outVariable>
             <outVariable localId="20" height="30" width="50" negated="false">
-              <position x="610" y="240"/>
+              <position x="570" y="260"/>
               <connectionPointIn>
                 <relPosition x="0" y="20"/>
-                <connection refLocalId="17" formalParameter="OUT_MV2">
-                  <position x="610" y="260"/>
-                  <position x="565" y="260"/>
-                  <position x="565" y="240"/>
-                  <position x="520" y="240"/>
+                <connection refLocalId="35" formalParameter="OUT_MV2">
+                  <position x="570" y="280"/>
+                  <position x="545" y="280"/>
+                  <position x="545" y="240"/>
+                  <position x="480" y="240"/>
                 </connection>
               </connectionPointIn>
               <expression>MV2</expression>
@@ -219,9 +175,9 @@
                 <relPosition x="0" y="10"/>
                 <connection refLocalId="1">
                   <position x="160" y="150"/>
-                  <position x="110" y="150"/>
-                  <position x="110" y="110"/>
-                  <position x="80" y="110"/>
+                  <position x="120" y="150"/>
+                  <position x="120" y="90"/>
+                  <position x="80" y="90"/>
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
@@ -236,8 +192,8 @@
                 <connection refLocalId="1">
                   <position x="160" y="200"/>
                   <position x="120" y="200"/>
-                  <position x="120" y="190"/>
-                  <position x="80" y="190"/>
+                  <position x="120" y="230"/>
+                  <position x="80" y="230"/>
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
@@ -265,9 +221,7 @@
                 <relPosition x="0" y="10"/>
                 <connection refLocalId="1">
                   <position x="160" y="90"/>
-                  <position x="110" y="90"/>
-                  <position x="110" y="110"/>
-                  <position x="80" y="110"/>
+                  <position x="80" y="90"/>
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
@@ -290,27 +244,166 @@
               <variable>CYCLE_ON</variable>
             </coil>
             <inVariable localId="31" height="30" width="40" negated="false">
-              <position x="220" y="90"/>
+              <position x="210" y="90"/>
               <connectionPointOut>
-                <relPosition x="40" y="20"/>
+                <relPosition x="40" y="10"/>
               </connectionPointOut>
               <expression>IN1</expression>
             </inVariable>
             <inVariable localId="32" height="30" width="30" negated="false">
-              <position x="270" y="120"/>
+              <position x="270" y="110"/>
               <connectionPointOut>
-                <relPosition x="30" y="20"/>
+                <relPosition x="30" y="10"/>
               </connectionPointOut>
-              <expression>5</expression>
+              <expression>1</expression>
             </inVariable>
-            <block localId="33" typeName="EQ_0" instanceName="EQ_00" height="80" width="70">
-              <position x="330" y="60"/>
+            <block localId="35" typeName="valves_handler" instanceName="valves_handler0" height="100" width="130">
+              <position x="350" y="170"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="22">
+                      <position x="350" y="200"/>
+                      <position x="181" y="200"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="18">
+                      <position x="350" y="220"/>
+                      <position x="285" y="220"/>
+                      <position x="285" y="240"/>
+                      <position x="220" y="240"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN_TLB1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="23">
+                      <position x="350" y="240"/>
+                      <position x="305" y="240"/>
+                      <position x="305" y="300"/>
+                      <position x="260" y="300"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN_TLB2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="90"/>
+                    <connection refLocalId="24">
+                      <position x="350" y="260"/>
+                      <position x="320" y="260"/>
+                      <position x="320" y="340"/>
+                      <position x="290" y="340"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="130" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT_MV1">
+                  <connectionPointOut>
+                    <relPosition x="130" y="50"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT_MV2">
+                  <connectionPointOut>
+                    <relPosition x="130" y="70"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <contact localId="36" height="20" width="21" negated="true">
+              <position x="140" y="370"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="1">
+                  <position x="140" y="380"/>
+                  <position x="80" y="380"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>CYCLE_ON</variable>
+            </contact>
+            <block localId="37" typeName="stop_cycle" instanceName="stop_cycle0" height="80" width="90">
+              <position x="430" y="320"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="36">
+                      <position x="430" y="350"/>
+                      <position x="335" y="350"/>
+                      <position x="335" y="380"/>
+                      <position x="160" y="380"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="90" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT_MV1">
+                  <connectionPointOut>
+                    <relPosition x="90" y="50"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT_MV2">
+                  <connectionPointOut>
+                    <relPosition x="90" y="70"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <outVariable localId="38" height="30" width="40" negated="false">
+              <position x="590" y="360"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="37" formalParameter="OUT_MV1">
+                  <position x="590" y="370"/>
+                  <position x="520" y="370"/>
+                </connection>
+              </connectionPointIn>
+              <expression>MV1</expression>
+            </outVariable>
+            <outVariable localId="39" height="30" width="40" negated="false">
+              <position x="590" y="400"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="37" formalParameter="OUT_MV2">
+                  <position x="590" y="410"/>
+                  <position x="550" y="410"/>
+                  <position x="550" y="390"/>
+                  <position x="520" y="390"/>
+                </connection>
+              </connectionPointIn>
+              <expression>MV2</expression>
+            </outVariable>
+            <block localId="40" typeName="EQ_0" instanceName="EQ_00" height="80" width="70">
+              <position x="340" y="30"/>
               <inputVariables>
                 <variable formalParameter="EN">
                   <connectionPointIn>
                     <relPosition x="0" y="30"/>
                     <connection refLocalId="25">
-                      <position x="330" y="90"/>
+                      <position x="340" y="60"/>
+                      <position x="200" y="60"/>
+                      <position x="200" y="90"/>
                       <position x="181" y="90"/>
                     </connection>
                   </connectionPointIn>
@@ -319,8 +412,10 @@
                   <connectionPointIn>
                     <relPosition x="0" y="50"/>
                     <connection refLocalId="31">
-                      <position x="330" y="110"/>
-                      <position x="260" y="110"/>
+                      <position x="340" y="80"/>
+                      <position x="300" y="80"/>
+                      <position x="300" y="100"/>
+                      <position x="250" y="100"/>
                     </connection>
                   </connectionPointIn>
                 </variable>
@@ -328,10 +423,10 @@
                   <connectionPointIn>
                     <relPosition x="0" y="70"/>
                     <connection refLocalId="32">
-                      <position x="330" y="130"/>
-                      <position x="310" y="130"/>
-                      <position x="310" y="140"/>
-                      <position x="300" y="140"/>
+                      <position x="340" y="100"/>
+                      <position x="320" y="100"/>
+                      <position x="320" y="120"/>
+                      <position x="300" y="120"/>
                     </connection>
                   </connectionPointIn>
                 </variable>
@@ -353,7 +448,7 @@
           </LD>
         </body>
       </pou>
-      <pou name="EQ_0" pouType="functionBlock">
+        <pou name="EQ_0" pouType="functionBlock">
         <interface>
           <inputVars>
             <variable name="IN1">
@@ -375,7 +470,7 @@
             </variable>
           </outputVars>
           <localVars>
-            <variable name="j">
+            <variable name="i">
               <type>
                 <INT/>
               </type>
@@ -384,22 +479,43 @@
         </interface>
         <body>
           <ST>
-            <xhtml:p><![CDATA[if IN1 = IN2 then
-  OUT:=TRUE;
-else
-  OUT:=FALSE;
+            <xhtml:p><![CDATA[OUT:=FALSE;
+if IN1 = IN2 THEN
+  OUT :=TRUE;
 end_if;
-j:=0;
-if IN1=4 then
-  while j<4 do
-    OUT:=TRUE;
+i:=0;
+if IN1 = 12 then
+  while i<4 do
+    OUT:=FALSE;
   end_while;
-end_if;
+ end_if;   ]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+      <pou name="stop_cycle" pouType="functionBlock">
+        <interface>
+          <outputVars>
+            <variable name="OUT_MV1">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="OUT_MV2">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[OUT_MV1 := FALSE;
+OUT_MV2 := FALSE;
 ]]></xhtml:p>
           </ST>
         </body>
       </pou>
-      <pou name="level_filtering" pouType="functionBlock">
+      <pou name="valves_handler" pouType="functionBlock">
         <interface>
           <inputVars>
             <variable name="IN1">
@@ -409,12 +525,12 @@ end_if;
             </variable>
             <variable name="IN_TLB1">
               <type>
-                <BOOL/>
+                <INT/>
               </type>
             </variable>
             <variable name="IN_TLB2">
               <type>
-                <BOOL/>
+                <INT/>
               </type>
             </variable>
           </inputVars>
@@ -431,17 +547,7 @@ end_if;
             </variable>
           </outputVars>
           <localVars>
-            <variable name="i">
-              <type>
-                <INT/>
-              </type>
-            </variable>
-            <variable name="avg">
-              <type>
-                <INT/>
-              </type>
-            </variable>
-            <variable name="sum">
+            <variable name="real_value">
               <type>
                 <INT/>
               </type>
@@ -450,22 +556,20 @@ end_if;
         </interface>
         <body>
           <ST>
-            <xhtml:p><![CDATA[i:=1;
-sum := 0;
-while (i < 5) do
-  sum := sum + IN1;
-  i:=i+1;
-end_while;
-avg:= sum /5;
+            <xhtml:p><![CDATA[
+real_value :=  IN1 - 5;
 
-if avg <=20 then
+if real_value <= IN_TLB2 then
   OUT_MV2 := FALSE;
   OUT_MV1 := TRUE;
 end_if;
-if avg >=60 THEN
+
+if real_value >= IN_TLB1 THEN
   OUT_MV2 := TRUE;
   OUT_MV1 := FALSE;
 end_if;
+
+
 ]]></xhtml:p>
           </ST>
         </body>
