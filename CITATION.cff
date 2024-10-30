@@ -12,3 +12,24 @@ version: 1.0.0
 doi: 10.5281/zenodo.10221583
 date-released: 2023-11-29
 url: "https://github.com/UniboSecurityResearch/PLC-LD-dataset"
+preferred-citation:
+  authors:
+    - family-names: Iacobelli
+      given-names: Antonio
+    - family-names: Rinieri
+      given-names: Lorenzo
+    - family-names: Melis
+      given-names: Andrea
+    - family-names: Al Sadi
+      given-names: Amir
+    - family-names: Prandini
+      given-names: Marco
+    - family-names: Callegati
+      given-names: Franco
+  title: 'Detection of Ladder Logic Bombs in PLC Control Programs: an Architecture based on Formal Verification'
+  type: conference-paper
+  pages: 1--7
+  year: '2024'
+  collection-title: 2024 IEEE 7th International Conference on Industrial Cyber-Physical Systems (ICPS)
+  conference: 2024 IEEE 7th International Conference on Industrial Cyber-Physical Systems (ICPS)
+  publisher: IEEE
