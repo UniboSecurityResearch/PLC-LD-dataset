@@ -2,7 +2,7 @@
 # PLC-LD-dataset 
 Dataset of PLC control logic programs written in Ladder Logic containing both legitimate programs and programs with Ladder Logic Bombs
 
-# Cite us
+### Cite us
 If you find this work interesting and use it in your academic research, please cite our paper:
 
 Iacobelli, A., Rinieri, L., Melis, A., Al Sadi, A., Prandini, M., & Callegati, F. (2024, May). Detection of Ladder Logic Bombs in PLC Control Programs: an Architecture based on Formal Verification. In 2024 IEEE 7th International Conference on Industrial Cyber-Physical Systems (ICPS) (pp. 1-7). IEEE.
